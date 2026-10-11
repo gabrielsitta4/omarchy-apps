@@ -10,16 +10,34 @@ Bar widget for the Omarchy shell that lists the open windows with a button to fo
 
 ## Install
 
+Everything it needs (`hyprctl`, `jq`, `pgrep`, `notify-send`) comes with Omarchy.
+
 ```bash
 git clone https://github.com/gabrielsitta4/omarchy-apps ~/Documents/Projetos/omarchy-apps
+mkdir -p ~/.config/omarchy/plugins ~/.local/bin
 ln -s ~/Documents/Projetos/omarchy-apps ~/.config/omarchy/plugins/local.apps
 ln -s ~/Documents/Projetos/omarchy-apps/force-kill ~/.local/bin/force-kill
+omarchy-shell shell rescanPlugins
+omarchy bar put local.apps --before omarchy.audio
 ```
 
-Add `{ "id": "local.apps" }` to a section of `bar.layout` in `~/.config/omarchy/shell.json`.
+## Shortcut
 
-Optional shortcut in `~/.config/hypr/bindings.lua`:
+Add this line to `~/.config/hypr/bindings.lua`, then run `hyprctl reload`:
 
 ```lua
-o.bind("SUPER + SHIFT + W", "Force kill window", "/home/<user>/.local/bin/force-kill")
+o.bind("SUPER + SHIFT + W", "Force kill window", "force-kill")
+```
+
+## Use
+
+- Click the bar icon to see the open windows. The X next to one kills it.
+- Super+Shift+W kills the focused window, even a fullscreen game that hides the bar.
+- The terminal running the shell or an agent shows up too; killing it closes that session.
+
+## Update
+
+```bash
+git -C ~/Documents/Projetos/omarchy-apps pull
+omarchy restart shell
 ```
