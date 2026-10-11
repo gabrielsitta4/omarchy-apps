@@ -13,10 +13,10 @@ Bar widget for the Omarchy shell that lists the open windows with a button to fo
 Everything it needs (`hyprctl`, `jq`, `pgrep`, `notify-send`) comes with Omarchy.
 
 ```bash
-git clone https://github.com/gabrielsitta4/omarchy-apps ~/Documents/Projetos/omarchy-apps
+git clone https://github.com/gabrielsitta4/omarchy-apps ~/Documents/Projects/omarchy-apps
 mkdir -p ~/.config/omarchy/plugins ~/.local/bin
-ln -s ~/Documents/Projetos/omarchy-apps ~/.config/omarchy/plugins/local.apps
-ln -s ~/Documents/Projetos/omarchy-apps/force-kill ~/.local/bin/force-kill
+ln -s ~/Documents/Projects/omarchy-apps ~/.config/omarchy/plugins/local.apps
+ln -s ~/Documents/Projects/omarchy-apps/force-kill ~/.local/bin/force-kill
 omarchy-shell shell rescanPlugins
 omarchy bar put local.apps --before omarchy.audio
 ```
@@ -38,6 +38,6 @@ o.bind("SUPER + SHIFT + W", "Force kill window", "force-kill")
 ## Update
 
 ```bash
-git -C ~/Documents/Projetos/omarchy-apps pull
+git -C ~/Documents/Projects/omarchy-apps pull
 omarchy restart shell
 ```
